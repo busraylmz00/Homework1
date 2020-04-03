@@ -1,25 +1,26 @@
 
 # parola kontrol
 
-forbidden_number = 0
+forbidden_number = "0"
 password = True
-user_input = 0
+
 print ("Parolanız sadece rakamlardan oluşabilir ve içerisinde 0 olmamalıdır.")
 
 while password :
 
+    user_input = input("Lütfen parola giriniz:")
+
     try:
-        user_input = int(input("Lütfen parola giriniz:"))
-        print(user_input)
+        if forbidden_number in user_input :
+            raise TypeError
+        user_input = int (user_input)
 
-    except ValueError:
-
+    except ValueError :
         print("Sadece rakam kullanılabilir")
 
-    if user_input <= forbidden_number:
-
-            print("Parola 0 içeremez.")
+    except TypeError :
+        print("Parola 0 içeremez.")
 
     else :
-        print("Üyelik tamamlandı.")
+        print("Tebrikler! Üyelik tamamlandı.")
         password = False
